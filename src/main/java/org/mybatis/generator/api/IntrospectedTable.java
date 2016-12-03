@@ -125,6 +125,9 @@ public abstract class IntrospectedTable {
         /** The attr insert selective statement id. */
         ATTR_INSERT_SELECTIVE_STATEMENT_ID,
         
+        /** The attr insert batch selective statement id. */
+        ATTR_INSERT_BATCH_SELECTIVE_STATEMENT_ID,
+        
         /** The attr select all statement id. */
         ATTR_SELECT_ALL_STATEMENT_ID,
         
@@ -154,6 +157,9 @@ public abstract class IntrospectedTable {
         
         /** The attr update by primary key selective statement id. */
         ATTR_UPDATE_BY_PRIMARY_KEY_SELECTIVE_STATEMENT_ID,
+        
+        /** The attr update batch by primary key selective statement id. */
+        ATTR_UPDATE_BATCH_BY_PRIMARY_KEY_SELECTIVE_STATEMENT_ID,
         
         /** The attr update by primary key with blobs statement id. */
         ATTR_UPDATE_BY_PRIMARY_KEY_WITH_BLOBS_STATEMENT_ID,
@@ -794,6 +800,7 @@ public abstract class IntrospectedTable {
         setDeleteByPrimaryKeyStatementId("deleteByPrimaryKey"); //$NON-NLS-1$
         setInsertStatementId("insert"); //$NON-NLS-1$
         setInsertSelectiveStatementId("insertSelective"); //$NON-NLS-1$
+        setInsertBatchSelectiveStatementId("insertBatchSelective"); //$NON-NLS-1$
         setSelectAllStatementId("selectAll"); //$NON-NLS-1$
         setSelectByExampleStatementId("selectByExample"); //$NON-NLS-1$
         setSelectOneByExampleStatementId("selectOneByExample"); //$NON-NLS-1$
@@ -804,6 +811,7 @@ public abstract class IntrospectedTable {
         setUpdateByExampleWithBLOBsStatementId("updateByExampleWithBLOBs"); //$NON-NLS-1$
         setUpdateByPrimaryKeyStatementId("updateByPrimaryKey"); //$NON-NLS-1$
         setUpdateByPrimaryKeySelectiveStatementId("updateByPrimaryKeySelective"); //$NON-NLS-1$
+        setUpdateBatchByPrimaryKeySelectiveStatementId("updateBatchByPrimaryKeySelective"); //$NON-NLS-1$
         setUpdateByPrimaryKeyWithBLOBsStatementId("updateByPrimaryKeyWithBLOBs"); //$NON-NLS-1$
         setBaseResultMapId("BaseResultMap"); //$NON-NLS-1$
         setResultMapWithBLOBsId("ResultMapWithBLOBs"); //$NON-NLS-1$
@@ -901,6 +909,19 @@ public abstract class IntrospectedTable {
         internalAttributes
                 .put(
                         InternalAttribute.ATTR_UPDATE_BY_PRIMARY_KEY_SELECTIVE_STATEMENT_ID,
+                        s);
+    }
+    
+    /**
+     * Sets the update batch by primary key selective statement id.
+     *
+     * @param s
+     *            the new update batch by primary key selective statement id
+     */
+    public void setUpdateBatchByPrimaryKeySelectiveStatementId(String s) {
+        internalAttributes
+                .put(
+                        InternalAttribute.ATTR_UPDATE_BATCH_BY_PRIMARY_KEY_SELECTIVE_STATEMENT_ID,
                         s);
     }
 
@@ -1018,6 +1039,17 @@ public abstract class IntrospectedTable {
     public void setInsertSelectiveStatementId(String s) {
         internalAttributes.put(
                 InternalAttribute.ATTR_INSERT_SELECTIVE_STATEMENT_ID, s);
+    }
+    
+    /**
+     * Sets the insert batch selective statement id.
+     *
+     * @param s
+     *            the new insert batch selective statement id
+     */
+    public void setInsertBatchSelectiveStatementId(String s) {
+        internalAttributes.put(
+                InternalAttribute.ATTR_INSERT_BATCH_SELECTIVE_STATEMENT_ID, s);
     }
 
     /**
@@ -1143,6 +1175,16 @@ public abstract class IntrospectedTable {
                 .get(InternalAttribute.ATTR_UPDATE_BY_PRIMARY_KEY_SELECTIVE_STATEMENT_ID);
     }
 
+    
+    /**
+     * Gets the update batch by primary key selective statement id.
+     *
+     * @return the update by primary key selective statement id
+     */
+    public String getUpdateBatchByPrimaryKeySelectiveStatementId() {
+        return internalAttributes
+                .get(InternalAttribute.ATTR_UPDATE_BATCH_BY_PRIMARY_KEY_SELECTIVE_STATEMENT_ID);
+    }
     /**
      * Gets the update by primary key statement id.
      *
@@ -1243,6 +1285,16 @@ public abstract class IntrospectedTable {
                 .get(InternalAttribute.ATTR_INSERT_SELECTIVE_STATEMENT_ID);
     }
 
+    /**
+     * Gets the insert batch selective statement id.
+     *
+     * @return the insert batch selective statement id
+     */
+    public String getInsertBatchSelectiveStatementId() {
+        return internalAttributes
+                .get(InternalAttribute.ATTR_INSERT_BATCH_SELECTIVE_STATEMENT_ID);
+    }
+    
     /**
      * Gets the insert statement id.
      *

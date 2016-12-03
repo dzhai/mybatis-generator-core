@@ -597,6 +597,27 @@ public interface Plugin {
      */
     boolean clientInsertSelectiveMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable);
+    
+    /**
+     * This method is called when the insert batch selective method has been generated
+     * in the client interface.
+     * 
+     * @param method
+     *            the generated insert batch method
+     * @param interfaze
+     *            the partially implemented client interface. You can add
+     *            additional imported classes to the interface if
+     *            necessary.
+     * @param introspectedTable
+     *            The class containing information about the table as
+     *            introspected from the database
+     * @return true if the method should be generated, false if the generated
+     *         method should be ignored. In the case of multiple plugins, the
+     *         first plugin returning false will disable the calling of further
+     *         plugins.
+     */
+    boolean clientInsertBatchSelectiveMethodGenerated(Method method,
+            Interface interfaze, IntrospectedTable introspectedTable);
 
     /**
      * This method is called when the selectAll method has been
@@ -788,6 +809,28 @@ public interface Plugin {
     boolean clientUpdateByPrimaryKeySelectiveMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable);
 
+    
+    /**
+     * This method is called when the updateBatchByPrimaryKeySelective method has
+     * been generated in the client interface.
+     * 
+     * @param method
+     *            the generated updateByPrimaryKeySelective method
+     * @param interfaze
+     *            the partially implemented client interface. You can add
+     *            additional imported classes to the interface if
+     *            necessary.
+     * @param introspectedTable
+     *            The class containing information about the table as
+     *            introspected from the database
+     * @return true if the method should be generated, false if the generated
+     *         method should be ignored. In the case of multiple plugins, the
+     *         first plugin returning false will disable the calling of further
+     *         plugins.
+     */
+    boolean clientUpdateBatchByPrimaryKeySelectiveMethodGenerated(Method method,
+            Interface interfaze, IntrospectedTable introspectedTable);
+    
     /**
      * This method is called when the updateByPrimaryKeyWithBLOBs method has
      * been generated in the client interface.
@@ -1178,7 +1221,22 @@ public interface Plugin {
      */
     boolean sqlMapInsertSelectiveElementGenerated(XmlElement element,
             IntrospectedTable introspectedTable);
-
+   
+    /**
+     * This method is called when the insert selective element is generated.
+     * 
+     * @param element
+     *            the generated &lt;insert&gt; element
+     * @param introspectedTable
+     *            The class containing information about the table as
+     *            introspected from the database
+     * @return true if the element should be generated, false if the generated
+     *         element should be ignored. In the case of multiple plugins, the
+     *         first plugin returning false will disable the calling of further
+     *         plugins.
+     */
+    boolean sqlMapInsertBatchSelectiveElementGenerated(XmlElement element,
+            IntrospectedTable introspectedTable);
     /**
      * This method is called when the resultMap with BLOBs element is generated
      * - this resultMap will extend the base resultMap.
@@ -1343,6 +1401,23 @@ public interface Plugin {
      *         plugins.
      */
     boolean sqlMapUpdateByPrimaryKeySelectiveElementGenerated(
+            XmlElement element, IntrospectedTable introspectedTable);
+    
+    /**
+     * This method is called when the updateBatchByPrimaryKeySelective element is
+     * generated.
+     * 
+     * @param element
+     *            the generated &lt;update&gt; element
+     * @param introspectedTable
+     *            The class containing information about the table as
+     *            introspected from the database
+     * @return true if the element should be generated, false if the generated
+     *         element should be ignored. In the case of multiple plugins, the
+     *         first plugin returning false will disable the calling of further
+     *         plugins.
+     */
+    boolean sqlMapUpdateBatchByPrimaryKeySelectiveElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable);
 
     /**

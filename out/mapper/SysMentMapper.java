@@ -1,5 +1,7 @@
 package mapper;
 
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import java.util.List;
 import model.SysMent;
 import model.SysMentExample;
@@ -14,11 +16,15 @@ public interface SysMentMapper {
 
     int insert(SysMent record);
 
-    int insertSelective(SysMent record);
+    int insertBatchSelective(List<SysMent> records);
+
+    int insert(SysMent record);
 
     SysMent selectOneByExample(SysMentExample example);
 
     List<SysMent> selectByExample(SysMentExample example);
+
+    PageList<SysMent> selectByExample(SysMentExample example, PageBounds pageBounds);
 
     SysMent selectByPrimaryKey(Long id);
 
@@ -27,6 +33,8 @@ public interface SysMentMapper {
     int updateByExample(@Param("record") SysMent record, @Param("example") SysMentExample example);
 
     int updateByPrimaryKeySelective(SysMent record);
+
+    int updateBatchByPrimaryKeySelective(List<SysMent> records);
 
     int updateByPrimaryKey(SysMent record);
 }

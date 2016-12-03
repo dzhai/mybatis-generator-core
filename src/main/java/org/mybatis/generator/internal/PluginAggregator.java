@@ -386,7 +386,21 @@ public final class PluginAggregator implements Plugin {
 
         return rc;
     }
+    
+    public boolean sqlMapUpdateBatchByPrimaryKeySelectiveElementGenerated(
+            XmlElement element, IntrospectedTable introspectedTable) {
+        boolean rc = true;
 
+        for (Plugin plugin : plugins) {
+            if (!plugin.sqlMapUpdateBatchByPrimaryKeySelectiveElementGenerated(
+                    element, introspectedTable)) {
+                rc = false;
+                break;
+            }
+        }
+
+        return rc;
+    }
     public boolean sqlMapUpdateByPrimaryKeyWithBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         boolean rc = true;
@@ -777,6 +791,21 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
+    public boolean clientUpdateBatchByPrimaryKeySelectiveMethodGenerated(Method method,
+            Interface interfaze, IntrospectedTable introspectedTable) {
+        boolean rc = true;
+
+        for (Plugin plugin : plugins) {
+            if (!plugin.clientUpdateBatchByPrimaryKeySelectiveMethodGenerated(method,
+                    interfaze, introspectedTable)) {
+                rc = false;
+                break;
+            }
+        }
+
+        return rc;
+    }
+    
     public boolean clientUpdateByPrimaryKeySelectiveMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         boolean rc = true;
@@ -957,7 +986,21 @@ public final class PluginAggregator implements Plugin {
 
         return rc;
     }
+    
+    public boolean sqlMapInsertBatchSelectiveElementGenerated(XmlElement element,
+            IntrospectedTable introspectedTable) {
+        boolean rc = true;
 
+        for (Plugin plugin : plugins) {
+            if (!plugin.sqlMapInsertBatchSelectiveElementGenerated(element,
+                    introspectedTable)) {
+                rc = false;
+                break;
+            }
+        }
+
+        return rc;
+    }
     public boolean clientInsertSelectiveMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         boolean rc = true;
@@ -973,6 +1016,21 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
+    public boolean clientInsertBatchSelectiveMethodGenerated(Method method,
+            Interface interfaze, IntrospectedTable introspectedTable) {
+        boolean rc = true;
+
+        for (Plugin plugin : plugins) {
+            if (!plugin.clientInsertSelectiveMethodGenerated(method, interfaze,
+                    introspectedTable)) {
+                rc = false;
+                break;
+            }
+        }
+
+        return rc;
+    }
+    
     public boolean clientInsertSelectiveMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         boolean rc = true;

@@ -189,7 +189,11 @@ public abstract class PluginAdapter implements Plugin {
             Interface interfaze, IntrospectedTable introspectedTable) {
         return true;
     }
-
+    
+	public boolean clientUpdateBatchByPrimaryKeySelectiveMethodGenerated(Method method, Interface interfaze,
+			IntrospectedTable introspectedTable) {
+		return true;
+	}
     public boolean clientUpdateByPrimaryKeySelectiveMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         return true;
@@ -341,7 +345,10 @@ public abstract class PluginAdapter implements Plugin {
             XmlElement element, IntrospectedTable introspectedTable) {
         return true;
     }
-
+    public boolean sqlMapUpdateBatchByPrimaryKeySelectiveElementGenerated(
+            XmlElement element, IntrospectedTable introspectedTable) {
+        return true;
+    }
     public boolean sqlMapUpdateByPrimaryKeyWithBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         return true;
@@ -356,12 +363,21 @@ public abstract class PluginAdapter implements Plugin {
             IntrospectedTable introspectedTable) {
         return true;
     }
-
+    
+    public boolean sqlMapInsertBatchSelectiveElementGenerated(XmlElement element,
+            IntrospectedTable introspectedTable) {
+        return true;
+    }
     public boolean clientInsertSelectiveMethodGenerated(Method method,
             Interface interfaze, IntrospectedTable introspectedTable) {
         return true;
     }
 
+    public boolean clientInsertBatchSelectiveMethodGenerated(Method method,
+            Interface interfaze, IntrospectedTable introspectedTable) {
+        return true;
+    }
+    
     public boolean clientInsertSelectiveMethodGenerated(Method method,
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         return true;

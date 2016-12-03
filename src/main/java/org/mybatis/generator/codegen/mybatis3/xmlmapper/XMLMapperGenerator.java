@@ -30,6 +30,7 @@ import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.CountByExampleE
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.DeleteByExampleElementGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.DeleteByPrimaryKeyElementGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.ExampleWhereClauseElementGenerator;
+import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.InsertBatchSelectiveElementGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.InsertElementGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.InsertSelectiveElementGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.ResultMapWithBLOBsElementGenerator;
@@ -38,6 +39,7 @@ import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.SelectByExample
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.SelectByExampleWithoutBLOBsElementGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.SelectByPrimaryKeyElementGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.SelectOneByExampleElementGenerator;
+import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.UpdateBatchByPrimaryKeySelectiveElementGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.UpdateByExampleSelectiveElementGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.UpdateByExampleWithBLOBsElementGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.UpdateByExampleWithoutBLOBsElementGenerator;
@@ -81,11 +83,13 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
         addDeleteByExampleElement(answer);
         addInsertElement(answer);
         addInsertSelectiveElement(answer);
+        addInsertBatchSelectiveElement(answer);
         addCountByExampleElement(answer);
         addUpdateByExampleSelectiveElement(answer);
         addUpdateByExampleWithBLOBsElement(answer);
         addUpdateByExampleWithoutBLOBsElement(answer);
         addUpdateByPrimaryKeySelectiveElement(answer);
+        addUpdateBatchByPrimaryKeySelectiveElement(answer);
         addUpdateByPrimaryKeyWithBLOBsElement(answer);
         addUpdateByPrimaryKeyWithoutBLOBsElement(answer);
 
@@ -195,6 +199,13 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
         }
     }
 
+    protected void addInsertBatchSelectiveElement(XmlElement parentElement) {
+        if (introspectedTable.getRules().generateInsertSelective()) {
+            AbstractXmlElementGenerator elementGenerator = new InsertBatchSelectiveElementGenerator();
+            initializeAndExecuteGenerator(elementGenerator, parentElement);
+        }
+    }
+    
     protected void addCountByExampleElement(XmlElement parentElement) {
         if (introspectedTable.getRules().generateCountByExample()) {
             AbstractXmlElementGenerator elementGenerator = new CountByExampleElementGenerator();
@@ -231,7 +242,14 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
             initializeAndExecuteGenerator(elementGenerator, parentElement);
         }
     }
-
+    
+    protected void addUpdateBatchByPrimaryKeySelectiveElement(
+            XmlElement parentElement) {
+        if (introspectedTable.getRules().generateUpdateByPrimaryKeySelective()) {
+            AbstractXmlElementGenerator elementGenerator = new UpdateBatchByPrimaryKeySelectiveElementGenerator();
+            initializeAndExecuteGenerator(elementGenerator, parentElement);
+        }
+    }
     protected void addUpdateByPrimaryKeyWithBLOBsElement(
             XmlElement parentElement) {
         if (introspectedTable.getRules().generateUpdateByPrimaryKeyWithBLOBs()) {
