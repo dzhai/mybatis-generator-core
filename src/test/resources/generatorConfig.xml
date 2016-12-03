@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+  
+<generatorConfiguration>  
+	<!-- classPathEntry:数据库的JDBC驱动-->
+	<!--<classPathEntry location="./lib/mysql-connector-java-5.1.38.jar" />   -->
+	
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+	
+	<!--实体类实现序列化-->
+	<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin> 
+		
+	<plugin type="org.mybatis.generator.plugins.MysqlPaginationPlugin"></plugin> 
+	
+	<!-- 去除自动生成的注释 -->
+	<commentGenerator>
+		<property name="suppressAllComments" value="true" />
+	</commentGenerator>
+	
+	 <!-- 数据库连接配置-->
+	 <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://172.16.21.6:3306/autozi-sps-manage?useUnicode=true&amp;characterEncoding=UTF-8"
+        userId="root"
+        password="qeegoo123.">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+    
+	<!-- model 代码生成位置 -->
+    <javaModelGenerator targetPackage="model" targetProject="E:\gitproject\mybatis-generator-core\out">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+	<!-- mapper.xml 代码生成位置 -->
+    <sqlMapGenerator targetPackage="mapper"  targetProject="E:\gitproject\mybatis-generator-core\out">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+	<!-- mapper.java 代码生成位置 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="mapper"  targetProject="E:\gitproject\mybatis-generator-core\out">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+    
+    
+    <!-- 数据库表配置 -->
+	<!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->
+	 <table tableName="sys_menu" domainObjectName="SysMent" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC"/>
+    </table>
+    </context>  
+</generatorConfiguration> 
