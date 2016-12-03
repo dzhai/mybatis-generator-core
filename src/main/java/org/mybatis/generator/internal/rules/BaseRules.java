@@ -341,6 +341,21 @@ public abstract class BaseRules implements Rules {
     }
 
     /**
+     * Implements the rule for generating the select by example without BLOBs
+     * SQL Map element and DAO method. If the selectByExample statement is
+     * allowed, then generate the element and method.
+     * 
+     * @return true if the element and method should be generated
+     */
+    public boolean generateSelectOneByExample() {
+        if (isModelOnly) {
+            return false;
+        }
+        
+        return tableConfiguration.isSelectByExampleStatementEnabled();
+    }
+    
+    /**
      * Implements the rule for generating the select by example with BLOBs SQL
      * Map element and DAO method. If the table has BLOB fields and the
      * selectByExample statement is allowed, then generate the element and

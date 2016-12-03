@@ -268,6 +268,21 @@ public final class PluginAggregator implements Plugin {
         return rc;
     }
 
+    public boolean sqlMapSelectOneByExampleElementGenerated(
+            XmlElement element, IntrospectedTable introspectedTable) {
+        boolean rc = true;
+
+        for (Plugin plugin : plugins) {
+            if (!plugin.sqlMapSelectOneByExampleElementGenerated(
+                    element, introspectedTable)) {
+                rc = false;
+                break;
+            }
+        }
+
+        return rc;
+    }
+    
     public boolean sqlMapSelectByExampleWithBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         boolean rc = true;

@@ -131,6 +131,9 @@ public abstract class IntrospectedTable {
         /** The attr select by example statement id. */
         ATTR_SELECT_BY_EXAMPLE_STATEMENT_ID,
         
+        /** The attr select one by example statement id. */
+        ATTR_SELECT_ONE_BY_EXAMPLE_STATEMENT_ID,
+        
         /** The attr select by example with blobs statement id. */
         ATTR_SELECT_BY_EXAMPLE_WITH_BLOBS_STATEMENT_ID,
         
@@ -793,6 +796,7 @@ public abstract class IntrospectedTable {
         setInsertSelectiveStatementId("insertSelective"); //$NON-NLS-1$
         setSelectAllStatementId("selectAll"); //$NON-NLS-1$
         setSelectByExampleStatementId("selectByExample"); //$NON-NLS-1$
+        setSelectOneByExampleStatementId("selectOneByExample"); //$NON-NLS-1$
         setSelectByExampleWithBLOBsStatementId("selectByExampleWithBLOBs"); //$NON-NLS-1$
         setSelectByPrimaryKeyStatementId("selectByPrimaryKey"); //$NON-NLS-1$
         setUpdateByExampleStatementId("updateByExample"); //$NON-NLS-1$
@@ -992,6 +996,17 @@ public abstract class IntrospectedTable {
     public void setSelectByExampleStatementId(String s) {
         internalAttributes.put(
                 InternalAttribute.ATTR_SELECT_BY_EXAMPLE_STATEMENT_ID, s);
+    }
+    
+    /**
+     * Sets the select one by example statement id.
+     *
+     * @param s
+     *            the new select one by example statement id
+     */
+    public void setSelectOneByExampleStatementId(String s) {
+        internalAttributes.put(
+                InternalAttribute.ATTR_SELECT_ONE_BY_EXAMPLE_STATEMENT_ID, s);
     }
 
     /**
@@ -1208,6 +1223,16 @@ public abstract class IntrospectedTable {
                 .get(InternalAttribute.ATTR_SELECT_BY_EXAMPLE_STATEMENT_ID);
     }
 
+    /**
+     * Gets the select one by example statement id.
+     *
+     * @return the select one by example statement id
+     */
+    public String getSelectOneByExampleStatementId() {
+        return internalAttributes
+                .get(InternalAttribute.ATTR_SELECT_ONE_BY_EXAMPLE_STATEMENT_ID);
+    }
+    
     /**
      * Gets the insert selective statement id.
      *

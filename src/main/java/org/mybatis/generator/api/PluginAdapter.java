@@ -307,7 +307,11 @@ public abstract class PluginAdapter implements Plugin {
             XmlElement element, IntrospectedTable introspectedTable) {
         return true;
     }
-
+    
+    public boolean sqlMapSelectOneByExampleElementGenerated(
+            XmlElement element, IntrospectedTable introspectedTable) {
+        return true;
+    }
     public boolean sqlMapSelectByExampleWithBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
         return true;

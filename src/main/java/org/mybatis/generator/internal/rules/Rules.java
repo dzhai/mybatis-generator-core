@@ -182,6 +182,14 @@ public interface Rules {
      * @return true if the element and method should be generated
      */
     boolean generateSelectByExampleWithoutBLOBs();
+    
+    /**
+     * 查询一条数据
+     * @return
+     * @author zhaicl
+     * @date 2016年12月3日 下午3:26:12
+     */
+    boolean generateSelectOneByExample();
 
     /**
      * Implements the rule for generating the select by example with BLOBs SQL

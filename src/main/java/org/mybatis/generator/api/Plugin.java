@@ -1245,6 +1245,22 @@ public interface Plugin {
             XmlElement element, IntrospectedTable introspectedTable);
 
     /**
+     * This method is called when the selectByExample element is generated.
+     * 
+     * @param element
+     *            the generated &lt;select&gt; element
+     * @param introspectedTable
+     *            The class containing information about the table as
+     *            introspected from the database
+     * @return true if the element should be generated, false if the generated
+     *         element should be ignored. In the case of multiple plugins, the
+     *         first plugin returning false will disable the calling of further
+     *         plugins.
+     */
+    boolean sqlMapSelectOneByExampleElementGenerated(
+            XmlElement element, IntrospectedTable introspectedTable);
+    
+    /**
      * This method is called when the selectByExampleWithBLOBs element is
      * generated.
      * 
