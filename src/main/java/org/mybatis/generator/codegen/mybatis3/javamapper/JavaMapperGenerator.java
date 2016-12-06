@@ -156,14 +156,14 @@ public class JavaMapperGenerator extends AbstractJavaClientGenerator {
     
     protected void addInsertSelectiveMethod(Interface interfaze) {
         if (introspectedTable.getRules().generateInsertSelective()) {
-            AbstractJavaMapperMethodGenerator methodGenerator = new InsertBatchSelectiveMethodGenerator();
+            AbstractJavaMapperMethodGenerator methodGenerator = new InsertSelectiveMethodGenerator();
             initializeAndExecuteGenerator(methodGenerator, interfaze);
         }
     }
     
     protected void addInsertBatchSelectiveMethod(Interface interfaze) {
     	if (introspectedTable.getRules().generateInsert()) {
-    		AbstractJavaMapperMethodGenerator methodGenerator = new InsertMethodGenerator(false);
+    		AbstractJavaMapperMethodGenerator methodGenerator = new InsertBatchSelectiveMethodGenerator();
     		initializeAndExecuteGenerator(methodGenerator, interfaze);
     	}
     }
