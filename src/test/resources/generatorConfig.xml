@@ -12,7 +12,7 @@
 	<!--实体类实现序列化-->
 	<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin> 
 		
-	<plugin type="org.mybatis.generator.plugins.MysqlPaginationPlugin"></plugin> 
+<!-- 	<plugin type="org.mybatis.generator.plugins.MysqlPaginationPlugin"></plugin>  -->
 	
 	<!-- 去除自动生成的注释 -->
 	<commentGenerator>
@@ -21,9 +21,9 @@
 	
 	 <!-- 数据库连接配置-->
 	 <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://172.16.21.6:3306/autozi-sps-manage?useUnicode=true&amp;characterEncoding=UTF-8"
+        connectionURL="jdbc:mysql://127.0.0.1:3306/hotgen_device_db?useUnicode=true&amp;characterEncoding=UTF-8"
         userId="root"
-        password="qeegoo123.">
+        password="root">
     </jdbcConnection>
 
     <javaTypeResolver >
@@ -31,24 +31,68 @@
     </javaTypeResolver>
     
 	<!-- model 代码生成位置 -->
-    <javaModelGenerator targetPackage="model" targetProject="E:\gitproject\mybatis-generator-core\out">
+    <javaModelGenerator targetPackage="cn.com.hotgen.device.admin.model" targetProject="I:\project\aceadmin\src\main\java">
       <property name="enableSubPackages" value="true" />
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
 	<!-- mapper.xml 代码生成位置 -->
-    <sqlMapGenerator targetPackage="mapper"  targetProject="E:\gitproject\mybatis-generator-core\out">
+    <sqlMapGenerator targetPackage="cn.com.hotgen.device.admin.config.mybatis"  targetProject="I:\project\aceadmin\src\main\java">
       <property name="enableSubPackages" value="true" />
     </sqlMapGenerator>
 	<!-- mapper.java 代码生成位置 -->
-    <javaClientGenerator type="XMLMAPPER" targetPackage="mapper"  targetProject="E:\gitproject\mybatis-generator-core\out">
+    <javaClientGenerator type="XMLMAPPER" targetPackage="cn.com.hotgen.device.admin.dao"  targetProject="I:\project\aceadmin\src\main\java">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
     
     
     <!-- 数据库表配置 -->
 	<!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->
-	 <table tableName="sys_menu" domainObjectName="SysMent" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
-		<generatedKey column="id" sqlStatement="JDBC"/>
+	 <table tableName="category" domainObjectName="Category" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC" />
+    </table>  
+    <table tableName="dealer" domainObjectName="Dealer" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC" />
     </table>
+    
+    <table tableName="device" domainObjectName="Device" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC" />
+    </table>
+    <table tableName="functions" domainObjectName="Functions" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC" />
+    </table>
+    <table tableName="history" domainObjectName="History" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC" />
+    </table>
+    <table tableName="hospital" domainObjectName="Hospital" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC" />
+    </table>
+    <table tableName="model" domainObjectName="Model" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC" />
+    </table>
+    <table tableName="notice" domainObjectName="Notice" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC" />
+    </table>
+    <table tableName="project" domainObjectName="Project" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC" />
+    </table>
+    <table tableName="province" domainObjectName="Province" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC" />
+    </table>
+     <table tableName="region" domainObjectName="Region" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC" />
+    </table>
+      <table tableName="rights" domainObjectName="Rights" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC" />
+    </table>
+      <table tableName="statuses" domainObjectName="Statuses" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC" />
+    </table>
+      <table tableName="type" domainObjectName="Type" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC" />
+    </table>
+      <table tableName="user" domainObjectName="User" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">	
+		<generatedKey column="id" sqlStatement="JDBC" />
+    </table>
+    
     </context>  
 </generatorConfiguration> 

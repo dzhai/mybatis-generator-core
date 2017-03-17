@@ -83,13 +83,13 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
         addDeleteByExampleElement(answer);
         addInsertElement(answer);
         addInsertSelectiveElement(answer);
-        addInsertBatchSelectiveElement(answer);
+        //addInsertBatchSelectiveElement(answer);
         addCountByExampleElement(answer);
         addUpdateByExampleSelectiveElement(answer);
         addUpdateByExampleWithBLOBsElement(answer);
         addUpdateByExampleWithoutBLOBsElement(answer);
         addUpdateByPrimaryKeySelectiveElement(answer);
-        addUpdateBatchByPrimaryKeySelectiveElement(answer);
+        //addUpdateBatchByPrimaryKeySelectiveElement(answer);
         addUpdateByPrimaryKeyWithBLOBsElement(answer);
         addUpdateByPrimaryKeyWithoutBLOBsElement(answer);
 
